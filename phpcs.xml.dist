@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<ruleset name="WP Hardening Toolkit">
+	<description>WordPress Coding Standards for WP Hardening Toolkit.</description>
+	<file>wp-hardening-toolkit.php</file>
+	<file>uninstall.php</file>
+	<file>includes</file>
+	<file>tests</file>
+	<exclude-pattern>vendor/*</exclude-pattern>
+	<arg name="basepath" value="."/>
+	<arg name="colors"/>
+	<arg value="ps"/>
+	<rule ref="WordPress">
+		<exclude name="WordPress.Files.FileName"/>
+	</rule>
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array">
+				<element value="wp-hardening-toolkit"/>
+			</property>
+		</properties>
+	</rule>
+	<rule ref="Universal.NamingConventions.NoReservedKeywordParameterNames"/>
+	<config name="minimum_supported_wp_version" value="6.4"/>
+</ruleset>
