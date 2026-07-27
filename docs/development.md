@@ -2,7 +2,7 @@
 
 ## Requirements
 
-- PHP 8.0 or newer
+- PHP 8.1 or newer
 - Composer 2
 - A supported WordPress installation for manual and integration verification
 
@@ -35,10 +35,13 @@ installation and an upgrade.
 
 ## Release checklist
 
-1. Run `composer check`.
-2. Test activation, deactivation, and uninstall on a disposable WordPress site.
-3. Complete every item in [manual verification](manual-verification.md).
-4. Test the oldest supported PHP and WordPress versions.
-5. Build a release artifact containing production Composer autoload files.
-6. Confirm no hardening option becomes enabled during upgrade.
-
+1. Update the version in `wp-hardening-toolkit.php` and the stable tag and
+   changelog in `readme.txt`.
+2. Run `composer check`.
+3. Run `composer build` and install the generated zip on a disposable site.
+4. Test activation, deactivation, and uninstall on a disposable WordPress site.
+5. Complete every item in [manual verification](manual-verification.md).
+6. Test the oldest supported PHP and WordPress versions.
+7. Confirm no hardening option becomes enabled during upgrade.
+8. Commit the release, then create and push the matching version tag (for
+   example, `v0.1.0`). GitHub Actions publishes the installable zip and checksum.

@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name:       WP Hardening Toolkit
- * Plugin URI:        https://github.com/wp-hardening-toolkit/wp-hardening-toolkit
+ * Plugin URI:        https://robertgoldberg.net
  * Description:       Modular, opt-in WordPress security hardening with auditable logging.
  * Version:           0.1.0
  * Requires at least: 6.4
- * Requires PHP:      8.0
+ * Requires PHP:      8.1
  * Author:            WP Hardening Toolkit Contributors
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html

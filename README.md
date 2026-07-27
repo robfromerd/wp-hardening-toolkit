@@ -5,11 +5,12 @@ behavior-changing hardening rule is enabled by default.
 
 ## Development
 
-Requires PHP 8.0+ and Composer.
+Requires PHP 8.1+ and Composer.
 
 ```bash
 composer install
 composer check
+composer build
 ```
 
 See [Architecture](docs/architecture.md) for the design.
@@ -29,17 +30,25 @@ Every behavior-changing control is disabled until an administrator opts in.
 
 ## Installation
 
-1. Run `composer install --no-dev --classmap-authoritative` for a production
-   package, or include the generated `vendor/` directory in the release zip.
-2. Place the plugin directory in `wp-content/plugins/`.
+1. Download the versioned plugin zip from the repository's Releases page.
+2. In WordPress, open **Plugins → Add New → Upload Plugin** and select the zip.
 3. Activate **WP Hardening Toolkit**.
 4. Review **Hardening → Settings**, enable one option at a time, and follow its
    test guidance.
+
+GitHub's automatically generated "Source code" archives are not installable
+plugin packages because they do not contain the production Composer autoloader.
+Use the attached `wp-hardening-toolkit-<version>.zip` release asset instead.
 
 ## Quality gates
 
 The `composer check` command and GitHub Actions both run PHP lint, PHPCS with
 WordPress Coding Standards, PHPStan level 8, and PHPUnit.
+
+`composer build` creates the installable plugin zip and SHA-256 checksum in
+`dist/`. Pushing a tag that matches the plugin version, such as `v0.1.0`,
+automatically runs the quality gates and publishes those files in a GitHub
+Release.
 
 Further reading:
 
