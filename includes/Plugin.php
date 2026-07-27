@@ -9,6 +9,9 @@ namespace WPHardeningToolkit;
 
 use WPHardeningToolkit\Logging\Retention;
 use WPHardeningToolkit\Logging\WpdbLogStore;
+use WPHardeningToolkit\Logging\Logger;
+use WPHardeningToolkit\Hardening\RestApi;
+use WPHardeningToolkit\Hardening\RestRoutePolicy;
 use wpdb;
 
 /**
@@ -74,8 +77,12 @@ final class Plugin {
 			return array();
 		}
 
+		$store  = new WpdbLogStore( $wpdb );
+		$logger = new Logger( $store );
+
 		return array(
-			new Retention( new WpdbLogStore( $wpdb ) ),
+			new Retention( $store ),
+			new RestApi( new RestRoutePolicy(), $logger ),
 		);
 	}
 }
