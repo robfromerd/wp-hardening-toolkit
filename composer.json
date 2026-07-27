@@ -28,7 +28,7 @@
   "scripts": {
     "lint": "find . -type f -name '*.php' -not -path './vendor/*' -print0 | xargs -0 -n1 php -l",
     "phpcs": "phpcs",
-    "phpstan": "phpstan analyse --debug --no-progress --memory-limit=512M",
+    "phpstan": "phpstan analyse --debug --no-progress --memory-limit=1G",
     "test": "phpunit",
     "check": [
       "@lint",

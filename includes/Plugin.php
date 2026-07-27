@@ -7,6 +7,7 @@
 
 namespace WPHardeningToolkit;
 
+use WPHardeningToolkit\Admin\Admin;
 use WPHardeningToolkit\Hardening\AuthorEnumeration;
 use WPHardeningToolkit\Hardening\AuthorEnumerationPolicy;
 use WPHardeningToolkit\Logging\Retention;
@@ -92,6 +93,7 @@ final class Plugin {
 			new XmlRpc( new XmlRpcPolicy() ),
 			new AuthorEnumeration( new AuthorEnumerationPolicy(), $logger ),
 			new WordPressCore( new WordPressPolicy() ),
+			new Admin( $store ),
 		);
 	}
 }
