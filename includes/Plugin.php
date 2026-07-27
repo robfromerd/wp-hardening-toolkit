@@ -7,6 +7,8 @@
 
 namespace WPHardeningToolkit;
 
+use WPHardeningToolkit\Hardening\AuthorEnumeration;
+use WPHardeningToolkit\Hardening\AuthorEnumerationPolicy;
 use WPHardeningToolkit\Logging\Retention;
 use WPHardeningToolkit\Logging\WpdbLogStore;
 use WPHardeningToolkit\Logging\Logger;
@@ -86,6 +88,7 @@ final class Plugin {
 			new Retention( $store ),
 			new RestApi( new RestRoutePolicy(), $logger ),
 			new XmlRpc( new XmlRpcPolicy() ),
+			new AuthorEnumeration( new AuthorEnumerationPolicy(), $logger ),
 		);
 	}
 }
