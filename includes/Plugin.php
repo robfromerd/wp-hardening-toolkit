@@ -7,6 +7,10 @@
 
 namespace WPHardeningToolkit;
 
+use WPHardeningToolkit\Logging\Retention;
+use WPHardeningToolkit\Logging\WpdbLogStore;
+use wpdb;
+
 /**
  * Coordinates plugin services and modules.
  */
@@ -51,10 +55,27 @@ final class Plugin {
 		 *
 		 * @param list<Module> $modules Modules to register.
 		 */
-		$this->modules = apply_filters( 'wpht_modules', array() );
+		$this->modules = apply_filters( 'wpht_modules', $this->default_modules() );
 
 		foreach ( $this->modules as $module ) {
 			$module->register();
 		}
+	}
+
+	/**
+	 * Creates built-in infrastructure modules.
+	 *
+	 * @return list<Module>
+	 */
+	private function default_modules(): array {
+		global $wpdb;
+
+		if ( ! $wpdb instanceof wpdb ) {
+			return array();
+		}
+
+		return array(
+			new Retention( new WpdbLogStore( $wpdb ) ),
+		);
 	}
 }

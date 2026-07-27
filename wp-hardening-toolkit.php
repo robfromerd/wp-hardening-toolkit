@@ -24,5 +24,6 @@ $wpht_autoloader = WPHT_PATH . 'vendor/autoload.php';
 
 if ( is_readable( $wpht_autoloader ) ) {
 	require_once $wpht_autoloader;
+	register_activation_hook( WPHT_FILE, array( \WPHardeningToolkit\Logging\Installer::class, 'activate' ) );
 	\WPHardeningToolkit\Plugin::instance()->boot();
 }
