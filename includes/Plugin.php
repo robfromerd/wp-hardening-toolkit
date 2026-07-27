@@ -16,6 +16,8 @@ use WPHardeningToolkit\Hardening\RestApi;
 use WPHardeningToolkit\Hardening\RestRoutePolicy;
 use WPHardeningToolkit\Hardening\XmlRpc;
 use WPHardeningToolkit\Hardening\XmlRpcPolicy;
+use WPHardeningToolkit\Hardening\WordPressCore;
+use WPHardeningToolkit\Hardening\WordPressPolicy;
 use wpdb;
 
 /**
@@ -89,6 +91,7 @@ final class Plugin {
 			new RestApi( new RestRoutePolicy(), $logger ),
 			new XmlRpc( new XmlRpcPolicy() ),
 			new AuthorEnumeration( new AuthorEnumerationPolicy(), $logger ),
+			new WordPressCore( new WordPressPolicy() ),
 		);
 	}
 }
